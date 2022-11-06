@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ article.post_title }}
+{% endblock %}
+
+{% block post_active %}
+    active
+{% endblock %}
+
+
+{% block content %}
+    <div class="row edit-row">
+{#                <div class="col-12">#}
+{#                    <hr class="edit-hr-primary edit-mb-55">#}
+{#                </div>#}
+            </div>
+            <div class="row edit-row">
+                <div class="col-lg-8 edit-post-col">
+                    <div class="edit-post-full">
+                        <div class="mb-4">
+                            <h1 class="pt-2 edit-color-primary font-weight-bold">{{ article.post_title }}</h1>
+                            <p> Posted by {{ user.firstname }} {{ user.lastname }} </p>
+                            <p class="edit-mb-40 text-right">{{ article.created_on.strftime("%c") }} </p>
+                            <p>
+                                {{ article.post_content }}
+                            </p>
+                        </div>
+                    </div>
+                    {% if current_user.is_authenticated and current_user.id == article.user_id %}
+                                <a type="button" href="{{ url_for('edit_page', edit_id=article.id) }}" class="edit-hover-white float-right edit-new-badge-right" id="edit-side-btn">Edit</a>
+                                <a type="button" href="{{ url_for('delete_page', delete_id=article.id) }}" id="edit-side-btn" class="edit-hover-white edit-new-badge-left">Delete</a>
+                    {% endif %}
+                </div>
+                <aside class="col-lg-4 edit-aside-col">
+                    <div class="edit-post-sidebar">
+                        <hr class="mb-3 edit-hr-primary">
+                        <h2 class="edit-mb-40 edit-post-title edit-color-primary">Advertisements</h2>
+                        <a href="#" class="d-block edit-mb-40">
+                            <figure>
+                                <img src="../static/img/armin_ronacher.jpg" alt="Image" class="mb-3 img-fluid">
+                                <figcaption class="edit-color-primary">Who is Armin Ronacher: The Creator of Flask</figcaption>
+                            </figure>
+                        </a>
+                        <a href="#" class="d-block edit-mb-40">
+                            <figure>
+                                <img src="../static/img/techstars.jpg" alt="Image" class="mb-3 img-fluid">
+                                <figcaption class="edit-color-primary">Altschool's School of Engineering applications are out!</figcaption>
+                            </figure>
+                        </a>
+                        <a href="#" class="d-block edit-mb-40">
+                            <figure>
+                                <img src="../static/img/hacksultan.png" alt="Image" class="mb-3 img-fluid">
+                                <figcaption class="edit-color-primary">HackSultan: The man behind the mask</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+{% endblock %}

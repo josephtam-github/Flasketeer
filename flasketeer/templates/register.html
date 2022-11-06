@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block register_active %}
+    active
+{% endblock %}
+
+{% block content %}
+<div class="row edit-row edit-mb-120">
+                <div class="col-12">
+                    <h2 class="edit-color-primary edit-post-title edit-mb-40">Register</h2>
+                    <hr class="col-12 edit-mb-40">
+                </div>
+                <div class="col-lg-7 edit-contact-left">
+                    <form method="POST" action="" class="mb-5 ml-auto mr-0 edit-contact-form">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.username.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.username(class='form-control mr-0 ml-auto', placeholder='E.g johndoe') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.firstname.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.firstname(class='form-control mr-0 ml-auto', placeholder='E.g John') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.lastname.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.lastname(class='form-control mr-0 ml-auto', placeholder='E.g Doe') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.email_address.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.email_address(class='form-control mr-0 ml-auto', placeholder='E.g johndoe@mail.com') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.password.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.password(class='form-control mr-0 ml-auto') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.confpassword.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.confpassword(class='form-control mr-0 ml-auto') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                            Already have an account? <a href="{{ url_for('login_page') }}" class="edit-color-primary ml-1"> Login</a>
+                        </div>
+                        <div class="form-group row text-left">
+                            <div class="col-12">
+                                {{ form.submit(class='edit-btn edit-btn-primary edit-btn-small') }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <ul class="col-lg-5 edit-contact-right">
+                    <li class="mb-4 edit-color-gray">
+                        Username, Firstname and Lastname must have a minimum of 2 characters and maximum of 30
+                    </li>
+                    <li class="mb-4 edit-color-gray">
+                        Password must have a minimum of 6 characters
+                    </li>
+                    <li class="mb-4 edit-color-gray">
+                        Email address must be valid
+                    </li>
+                    <li class="mb-4 edit-color-gray">
+                        Confirm Password must match Password
+                    </li>
+                </ul>
+            </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block login_active %}
+    active
+{% endblock %}
+
+
+{% block content %}
+<div class="row edit-row edit-mb-120">
+                <div class="col-12">
+                    <h2 class="edit-color-primary edit-post-title edit-mb-40">Login to your account</h2>
+                    <hr class="col-12 edit-mb-40">
+                </div>
+                <div class="col-lg-7 edit-contact-left">
+                    <form method="POST" action="" class="mb-5 ml-auto mr-0 edit-contact-form">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.username.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.username(class='form-control mr-0 ml-auto', placeholder='E.g johndoe') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.password.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.password(class='form-control mr-0 ml-auto') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                            Don't have an account? <a href="{{ url_for('register_page') }}" class="edit-color-primary ml-1"> Sign Up</a>
+                        </div>
+                        <div class="form-group row text-left">
+                            <div class="col-12">
+                                {{ form.submit(class='edit-btn edit-btn-primary edit-btn-small') }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block post_active %}
+    active
+{% endblock %}
+
+
+{% block content %}
+    <div class="row edit-row edit-mb-45">
+                <div class="col-12">
+                    <!-- Image should be here -->
+                </div>
+            </div>
+            <div class="row edit-row edit-mb-120">
+                <div class="col-12">
+                    <h2 class="edit-color-primary edit-post-title edit-mb-60">Create a Post</h2>
+                </div>
+                <div class="col-lg-7 edit-contact-left">
+                    <form method="POST" action="" class="mb-5 ml-auto mr-0 edit-contact-form">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.post_title.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.post_title(class='form-control mr-0 ml-auto', placeholder='E.g Flask app.app_context().push') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-5">
+                            {{ form.post_content.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                    {{ form.post_content(class='form-control mr-0 ml-auto', rows='8')}}
+                            </div>
+                        </div>
+                        <div class="form-group row text-right">
+                            <div class="col-12">
+                                {{ form.submit(class='edit-btn edit-btn-primary edit-btn-small') }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                    <ul class="col-lg-5 edit-contact-right">
+                        <li class="mb-4 edit-color-gray">
+                            Keep it flask related 🌶
+                        </li>
+                        <li class="mb-4 edit-color-gray">
+                            Keep the Title short and descriptive 👌
+                        </li>
+                        <li class="mb-4 edit-color-gray">
+                            Take your time on your article 🤔
+                        </li>
+                        <li class="mb-4 edit-color-gray">
+                            Express your creativity and technicality 😎
+                        </li>
+                    </ul>
+                    <ul class="edit-social-links">
+                        <li class="mb-2">
+                            <a href="https://facebook.com" class="d-flex align-items-center justify-content-center">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="https://twitter.com" class="d-flex align-items-center justify-content-center">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="https://youtube.com" class="d-flex align-items-center justify-content-center">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="https://instagram.com" class="d-flex align-items-center justify-content-center mr-0">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+{% endblock %}

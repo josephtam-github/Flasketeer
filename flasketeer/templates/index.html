@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block home_active %}
+    active
+{% endblock %}
+
+{% block content %}
+
+            <div class="row edit-row">
+                {% for content in articles %}
+                    <article class="col-12 col-md-6 edit-post">
+                        <hr class="edit-hr-primary">
+                        <a href="{{ url_for('article_page', article_id=content.id) }}" class="effect-lily edit-post-link edit-pt-60">
+                            <div class="edit-post-link-inner">
+                                <img src="../static/img/python_coding.jpg" alt="Image" class="img-fluid">
+                            </div>
+                            <h2 class="edit-pt-30 edit-color-primary px-2 edit-post-title">{{ content.post_title }}</h2>
+                        </a>
+                        {% if current_user.is_authenticated and current_user.id == content.user_id %}
+                                <a type="button" href="{{ url_for('edit_page', edit_id=content.id) }}" class="edit-hover-white position-absolute edit-new-badge-right" id="edit-side-btn">Edit</a>
+                                <a type="button" href="{{ url_for('delete_page', delete_id=content.id) }}" id="edit-side-btn" class="position-absolute edit-hover-white edit-new-badge-left">Delete</a>
+                        {% endif %}
+                        <p class="edit-pt-30 px-2">
+                            {{ preview(content.post_content) }}
+                        </p>
+                        <div class="d-flex justify-content-between edit-pt-45">
+                            <span class="edit-color-primary">{{ content.created_on.strftime("%c") }}</span>
+                            <span class="edit-color-primary">By {{ content.author }}</span>
+                        </div>
+                        <hr>
+                    </article>
+                {% endfor %}
+            </div>
+
+{#            <div class="row edit-row edit-mt-100 edit-mb-75">#}
+{#                <div class="edit-prev-next-wrapper">#}
+{#                    <a href="#" class="mb-2 edit-btn edit-btn-primary edit-prev-next disabled edit-mr-20">Prev</a>#}
+{#                    <a href="#" class="mb-2 edit-btn edit-btn-primary edit-prev-next">Next</a>#}
+{#                </div>#}
+{#                <div class="edit-paging-wrapper">#}
+{#                    <span class="d-inline-block mr-3">Page</span>#}
+{#                    <nav class="edit-paging-nav d-inline-block">#}
+{#                        <ul>#}
+{#                            <li class="edit-paging-item active">#}
+{#                                <a href="#" class="mb-2 edit-btn edit-paging-link">1</a>#}
+{#                            </li>#}
+{#                            <li class="edit-paging-item">#}
+{#                                <a href="#" class="mb-2 edit-btn edit-paging-link">2</a>#}
+{#                            </li>#}
+{#                            <li class="edit-paging-item">#}
+{#                                <a href="#" class="mb-2 edit-btn edit-paging-link">3</a>#}
+{#                            </li>#}
+{#                            <li class="edit-paging-item">#}
+{#                                <a href="#" class="mb-2 edit-btn edit-paging-link">4</a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                    </nav>#}
+{#                </div>#}
+{#            </div>#}
+{% endblock %}

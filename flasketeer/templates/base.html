@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %} {% endblock %}| Flasketeers</title>
+	<link rel="stylesheet" href="../static/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+	<header class="edit-header" id="edit-header">
+        <div class="edit-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="edit-site-header">
+                <div class="mb-3 mx-auto edit-site-logo"><i class="fas fa-pepper-hot fa-3x"></i></div>
+                <h1 class="text-center flask-font">Flasketeers</h1>
+            </div>
+            <nav class="edit-nav" id="edit-nav">
+                <ul>
+                    <li class="edit-nav-item {% block home_active %}  {% endblock %}"><a href="{{ url_for('home_page') }}" class="edit-nav-link">
+                        <i class="fas fa-home"></i>
+                        Blog Home
+                    </a></li>
+                    {% if current_user.is_authenticated %}
+                    {% else %}
+                        <li class="edit-nav-item {% block register_active %}  {% endblock %}"><a href="{{ url_for('register_page') }}" class="edit-nav-link">
+                            <i class="fas fa-feather"></i>
+                            Register
+                            </a>
+                        </li>
+                    {% endif %} 
+                    <li class="edit-nav-item {% block login_active %}  {% endblock %}">
+                        {% if current_user.is_authenticated %}
+                           <a href="{{ url_for('logout_page') }}" class="edit-nav-link">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                           </a>
+                        {% else %}
+                            <a href="{{ url_for('login_page') }}" class="edit-nav-link">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                        {% endif %}
+                    </li>
+                    <li class="edit-nav-item {% block post_active %}  {% endblock %}"><a href="{{ url_for('post_page') }}" class="edit-nav-link">
+                        <i class="fas fa-pen"></i>
+                        Post
+                    </a></li>
+                    <li class="edit-nav-item {% block about_active %}  {% endblock %}"><a href="{{ url_for('about_page') }}" class="edit-nav-link">
+                        <i class="fas fa-users"></i>
+                        About Us
+                    </a></li>
+                    <li class="edit-nav-item {% block contact_active %}  {% endblock %}"><a href="{{ url_for('contact_page') }}" class="edit-nav-link">
+                        <i class="far fa-comments"></i>
+                        Contact Us
+                    </a></li>
+                </ul>
+            </nav>
+            <div class="edit-mb-65">
+                <a rel="nofollow" href="https://fb.com/templatemo" class="edit-social-link">
+                    <i class="fab fa-facebook edit-social-icon"></i>
+                </a>
+                <a href="https://twitter.com" class="edit-social-link">
+                    <i class="fab fa-twitter edit-social-icon"></i>
+                </a>
+                <a href="https://instagram.com" class="edit-social-link">
+                    <i class="fab fa-instagram edit-social-icon"></i>
+                </a>
+                <a href="https://linkedin.com" class="edit-social-link">
+                    <i class="fab fa-linkedin edit-social-icon"></i>
+                </a>
+            </div>
+            <p class="edit-mb-80 pr-5 text-white">
+               Flasketeers the largest and most active community forum for Python Flask developers. You're welcome to share your code, ideas and questions about the most famous microframework.
+            </p>
+        </div>
+    </header>
+        <main class="edit-main">
+            <div class="container-fluid">
+            <!-- Search form -->
+{#            <div class="row edit-row">#}
+{#                <div class="col-12">#}
+{#                    <div method="GET" class="form-inline edit-mb-80 edit-search-form">#}
+{#                        <div class="search-box">#}
+{#                            <input type="text" name="search_text" id="search_text" class="form-control edit-search-input" placeholder="Search fields e.g. Cairocoder">#}
+{#                        </div>#}
+{#                        <button class="edit-search-button" type="submit">#}
+{#                           <i class="fas fa-search edit-search-icon" aria-hidden="true"></i>#}
+{#                        </button>#}
+{#                    </div>#}
+{#                    <div id="result"></div>#}
+{#                </div>#}
+{#            </div>#}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                     {% for category, message in messages %}
+                         <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                             <button onclick="onButtonPress()" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                             {{ message }}
+                         </div>
+                     {% endfor %}
+                 {% endif %}
+             {% endwith %}
+            {% block content %}
+
+            {% endblock %}
+            <footer class="row edit-row">
+                <hr class="col-12">
+                <div class="col-md-6 col-12 edit-color-gray">
+                    Design: <a rel="nofollow" target="_parent" href="https://linkt.ree/JosephTam" class="edit-external-link">Joseph Tam</a>
+                </div>
+                <div class="col-md-6 col-12 edit-color-gray edit-copyright">
+                    Copyright 2022 josephtam.tech
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

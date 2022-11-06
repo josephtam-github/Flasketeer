@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Contact
+{% endblock %}
+
+{% block contact_active %}
+    active
+{% endblock %}
+
+{% block content %}
+{#            <div class="row edit-row edit-mb-45">#}
+{#                <div class="col-12">#}
+{#                    <hr class="edit-hr-primary edit-mb-55">#}
+{#                    <div class="gmap_canvas"> <!-- Google Map -->#}
+{#                        <iframe width="100%" height="477" id="gmap_canvas"#}
+{#                            src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"#}
+{#                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+            <div class="row edit-row edit-mb-120">
+                <div class="col-12">
+                    <h1 class="edit-color-primary font-weight-bold edit-mb-60">Contact Us</h1>
+                </div>
+                <div class="col-lg-7 edit-contact-left">
+                     <form method="POST" action="" class="mb-5 ml-auto mr-0 edit-contact-form">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group row mb-4 align-items-center justify-content-center">
+                                {{ form.name.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.name(class='form-control mr-0 ml-auto') }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-5">
+                                {{ form.email_address.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.email_address(class='form-control mr-0 ml-auto', rows='8')}}
+                            </div>
+                        </div>
+                         <div class="form-group row mb-5">
+                                {{ form.subject.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.subject(class='form-control mr-0 ml-auto', rows='8')}}
+                            </div>
+                        </div>
+                         <div class="form-group row mb-5">
+                                {{ form.message.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                {{ form.message(class='form-control mr-0 ml-auto', rows='8')}}
+                            </div>
+                        </div>
+                        <div class="form-group row text-right">
+                            <div class="col-12">
+                                {{ form.submit(class='edit-btn edit-btn-primary edit-btn-small') }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-5 edit-contact-right">
+                    <address class="mb-4 edit-color-gray">
+                        Locations · Primary. Lagos, NG. Get directions · Kigali, RW.
+                    </address>
+                    <span class="d-block">
+                        Tel:
+                        <a href="tel:080-5088-1169" class="edit-color-gray">080-5088-11690</a>
+                    </span>
+                    <span class="mb-4 d-block">
+                        Email:
+                        <a href="mailto:info@company.com" class="edit-color-gray">joseph@beelearn.ng</a>
+                    </span>
+                    <p class="mb-5 edit-line-height-short">
+                        Earn a diploma in high-in-demand tech skills at an affordable cost. Programs Available: Data Science Data Analysis Data Engineering Software Engineering Product Management Product Marketing Product Design
+                    </p>
+                    <ul class="edit-social-links">
+                        <li class="mb-2">
+                            <a href="https://facebook.com" class="d-flex align-items-center justify-content-center">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="https://twitter.com" class="d-flex align-items-center justify-content-center">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="https://youtube.com" class="d-flex align-items-center justify-content-center">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="https://instagram.com" class="d-flex align-items-center justify-content-center mr-0">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>      
+{% endblock %}
