@@ -166,7 +166,7 @@ Distributed under the MIT License. See <a href="https://github.com/josephtam-git
 <!-- Contact -->
 ## Contact
 
-Joseph Tam - [@Joseph_tam_](https://twitter.com/Joseph_tam_) - austinwopara@gmail.com
+Joseph Tam - [@Joseph_tam_](https://twitter.com/Joseph_tam_) - josephta247@gmail.com
 
 Project Link: [Flasketeers](https://github.com/josephtam-github/flasketeers)
 
