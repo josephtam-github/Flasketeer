@@ -22,6 +22,9 @@
                             <h1 class="pt-2 edit-color-primary font-weight-bold">{{ article.post_title }}</h1>
                             <p> Posted by {{ user.firstname }} {{ user.lastname }} </p>
                             <p class="edit-mb-40 text-right">{{ article.created_on.strftime("%c") }} </p>
+                            <div class="edit-post-link-inner mb-5">
+                                <img src="{{ url_for('get_file', filename=article.post_image) }}" alt="Image" class="img-fluid">
+                            </div>
                             <p>
                                 {{ article.post_content }}
                             </p>
