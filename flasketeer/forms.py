@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 from flasketeer.models import Users, Posts
@@ -54,7 +55,13 @@ class PostForm(FlaskForm):
 
     post_title = StringField(label='Title', validators=[Length(min=2, max=80), DataRequired()])
     post_content = TextAreaField(label='Body', validators=[Length(min=50), DataRequired()])
+    post_image = FileField(label='Image',
+                           validators=[
+                               FileAllowed(['jpg', 'png'], 'Only images are allowed')
+                           ]
+                           )
     submit = SubmitField(label='Post')
+
 
 class EditForm(FlaskForm):
     def validate_post_title(self, title_to_check):
@@ -78,3 +85,7 @@ class ContactForm(FlaskForm):
     subject = StringField(label='Subject:', validators=[Length(min=2, max=80), DataRequired()])
     message = TextAreaField(label='Message:', validators=[Length(min=2), DataRequired()])
     submit = SubmitField(label='Submit')
+
+
+class UploadForm(FlaskForm):
+    submit = SubmitField(label='Upload')
