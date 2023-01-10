@@ -1,9 +1,21 @@
+import datetime
+
 from flasketeer import app
 from flasketeer.models import Users, Posts, Contact
 from flasketeer.forms import RegisterForm, LoginForm, PostForm, EditForm, ContactForm
 from flasketeer import db
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, send_from_directory
 from flask_login import login_user, logout_user, login_required, current_user
+from flask_uploads import UploadSet, IMAGES, configure_uploads
+from werkzeug.utils import secure_filename
+
+photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
+
+
+@app.route('/static/img/<filename>')
+def get_file(filename):
+    return send_from_directory('static/img/', filename)
 
 
 @app.route('/')
@@ -17,11 +29,13 @@ def preview_article(article):
     word_preview = ' '.join(word_list[:2]) + '...'
     return word_preview
 
+
 @app.route('/article/<int:article_id>')
 def article_page(article_id):
     article = Posts.query.filter_by(id=article_id).first()
     user = Users.query.filter_by(id=article.user_id).first()
-    return render_template('article.html', article=article, user=user)
+    file_url = url_for('get_file', filename=article.post_image),
+    return render_template('article.html', article=article, user=user, file_url=file_url)
 
 
 @app.route('/post', methods=['GET', 'POST'])
@@ -31,9 +45,18 @@ def post_page():
     username = current_user.username
     form = PostForm()
     if form.validate_on_submit():
+
+        if not form.post_image.data == None:
+            now = datetime.datetime.now()
+            new_name = str(user_id) + '_' + now.strftime('%d%m%Y%H%M%S') + '.'
+            filename = photos.save(form.post_image.data, name=new_name)
+        else:
+            filename = 'python_coding.jpg'
+
         post_to_create = Posts(post_title=form.post_title.data,
                                post_content=form.post_content.data,
                                user_id=user_id,
+                               post_image=filename,
                                author=username)
         db.session.add(post_to_create)
         db.session.commit()
@@ -41,7 +64,7 @@ def post_page():
         return redirect(url_for('home_page'))
     if form.errors != {}:
         for err_msg in form.errors.values():
-            flash(f'There was an error signing you up: {err_msg}', category='danger')
+            flash(f'There was an error creating your post: {err_msg}', category='danger')
 
     return render_template('post.html', form=form)
 
@@ -149,6 +172,11 @@ def contact_page():
         for err_msg in form.errors.values():
             flash(f'There was an error sending your message: {err_msg}', category='danger')
     return render_template('contact.html', form=form)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html')
 
 # @app.route("/ajaxlivesearch",methods=["POST","GET"])
 # def ajaxlivesearch():
