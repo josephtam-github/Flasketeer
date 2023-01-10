@@ -39,7 +39,7 @@ class Posts(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     post_title = db.Column(db.String(80), nullable=False)
     post_content = db.Column(db.String, nullable=False)
-    # post_image = db.Column(db.String, nullable=False)
+    post_image = db.Column(db.String, nullable=False, default='python_coding.jpg')
     created_on = db.Column(db.DateTime, default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), unique=False, nullable=False)
     author = db.Column(db.String, nullable=False)
