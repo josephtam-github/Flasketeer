@@ -20,7 +20,7 @@
                     <h2 class="edit-color-primary edit-post-title edit-mb-60">Create a Post</h2>
                 </div>
                 <div class="col-lg-7 edit-contact-left">
-                    <form method="POST" action="" class="mb-5 ml-auto mr-0 edit-contact-form">
+                    <form method="POST" enctype="multipart/form-data" action="" class="mb-5 ml-auto mr-0 edit-contact-form">
                         {{ form.hidden_tag() }}
                         <div class="form-group row mb-4 align-items-center justify-content-center">
                                 {{ form.post_title.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
@@ -32,6 +32,12 @@
                             {{ form.post_content.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
                             <div class="col-sm-9">
                                     {{ form.post_content(class='form-control mr-0 ml-auto', rows='8')}}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-5">
+                            {{ form.post_image.label(class='col-sm-3 col-form-label text-left edit-color-primary') }}
+                            <div class="col-sm-9">
+                                    {{ form.post_image(class='form-control mr-0 ml-auto', rows='8')}}
                             </div>
                         </div>
                         <div class="form-group row text-right">
@@ -53,6 +59,9 @@
                         </li>
                         <li class="mb-4 edit-color-gray">
                             Express your creativity and technicality 😎
+                        </li>
+                        <li class="mb-4 edit-color-gray">
+                            If you choose to use a cover image let it be landscape with the ratio of 2:1 📷
                         </li>
                     </ul>
                     <ul class="edit-social-links">
