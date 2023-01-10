@@ -16,7 +16,7 @@
                         <hr class="edit-hr-primary">
                         <a href="{{ url_for('article_page', article_id=content.id) }}" class="effect-lily edit-post-link edit-pt-60">
                             <div class="edit-post-link-inner">
-                                <img src="../static/img/python_coding.jpg" alt="Image" class="img-fluid">
+                                <img src="{{ url_for('get_file', filename=content.post_image) }}" alt="Image" class="img-fluid">
                             </div>
                             <h2 class="edit-pt-30 edit-color-primary px-2 edit-post-title">{{ content.post_title }}</h2>
                         </a>
