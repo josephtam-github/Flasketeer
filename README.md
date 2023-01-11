@@ -4,19 +4,15 @@
 <!-- Project Shields -->
 <div align="center">
 
-  [![Contributors][contributors-shield]][contributors-url]
-  [![Forks][forks-shield]][forks-url]
-  [![Stargazers][stars-shield]][stars-url]
-  [![Issues][issues-shield]][issues-url]
-  [![MIT License][license-shield]][license-url]
-  [![Twitter][twitter-shield]][twitter-url]
+  [![Contributors][contributors-shield]](https://github.com/josephtam-github/flasketeer/graphs/contributors)
+  [![Forks][forks-shield]](https://github.com/josephtam-github/flasketeer/network/members)
 </div>
 
 <!-- Project Logo -->
 <br />
 <div align="center">
   <a href="https://github.com/josephtam-github/flasketeers">
-    <img src="static/Ze_Blog_logo/site.png" alt="Logo" width="90%" height="30%">
+    <img src="flasketeer/static/img/flasketeer_logo.png" alt="Logo" width="90%" height="30%">
   </a>
 </div>
 
@@ -146,10 +142,17 @@ Python3: [Get Python](https://www.python.org/downloads/)
 
 <br />
 
-[![Flasketeers Screenshot][flasketeers-screenshot]](https://github.com/josephtam-github/flasketeers/blob/main/static/screenshot.png)
+Flasketeers Screenshot
+<img src="flasketeer/static/img/screenshot.png">
 
 <br/>
 
+<br />
+
+Flasketeers Screenshot
+<img src="flasketeer/static/img/screenshot2.png">
+
+<br/>
 <p align="right"><a href="#readme-top">back to top</a></p>
 
 ---
